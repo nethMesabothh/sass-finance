@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Ubuntu_Mono as FontSans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { QueryProvider } from "@/components/_components/query-providers";
 
 const fontSans = FontSans({ subsets: ["latin"], weight: "400" });
 
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <ClerkProvider afterSignOutUrl="/">
       <html lang="en">
-        <body className={fontSans.className}>{children}</body>
+        <body className={fontSans.className}>
+          <QueryProvider>{children}</QueryProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
