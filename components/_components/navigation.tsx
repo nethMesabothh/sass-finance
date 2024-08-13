@@ -52,6 +52,7 @@ export const Navigation = (props: Props) => {
             variant="outline"
             size="sm"
             className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition"
+            asChild
           >
             <Menu className="size-4" />
           </Button>
@@ -64,6 +65,7 @@ export const Navigation = (props: Props) => {
                   variant={pathname === route.href ? "secondary" : "ghost"}
                   onClick={() => onClick(route.href)}
                   className="w-full justify-start"
+                  key={route.label}
                 >
                   {route.label}
                 </Button>
