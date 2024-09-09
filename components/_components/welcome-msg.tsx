@@ -13,7 +13,7 @@ export const WelcomeMsg = (props: Props) => {
     <div className="space-y-2 mb-4">
       <h2 className="text-2xl lg:text-4xl text-white font-medium">
         {isLoaded ? (
-          `Welcome back, ${user?.firstName} 👋`
+          `Welcome back, ${user?.firstName}`
         ) : (
           <div className="space-y-4">
             <Skeleton className="h-4 w-[250px]" />
@@ -21,7 +21,7 @@ export const WelcomeMsg = (props: Props) => {
         )}
       </h2>
       {isLoaded ? (
-        <p className="text-sm lg:text-base text-[#89b6fd]">
+        <p className="text-sm lg:text-base text-slate-200">
           This is your Financial Overview Report
         </p>
       ) : (
