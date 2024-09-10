@@ -1,7 +1,9 @@
 "use client";
 import { useMountedState } from "react-use";
-import { NewAccountSheet } from "./new-account-sheet";
-import { EditAccountSheet } from "./edit-account-sheet";
+import { NewAccountSheet } from "./accounts/new-account-sheet";
+import { EditAccountSheet } from "./accounts/edit-account-sheet";
+import { NewCategorySheet } from "./categories/new-category-sheet";
+import { EditCategorySheet } from "./categories/edit-category-sheet";
 
 export const SheetProvider = () => {
   const isMounted = useMountedState();
@@ -12,6 +14,8 @@ export const SheetProvider = () => {
     <>
       <NewAccountSheet />
       <EditAccountSheet />
+      <NewCategorySheet />
+      <EditCategorySheet />
     </>
   );
 };

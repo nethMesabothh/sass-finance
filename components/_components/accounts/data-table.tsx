@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { useConfirm } from "@/hooks/use-confirm";
+import { useConfirm } from "@/hooks/accounts/use-confirm";
 
 import {
   ColumnDef,

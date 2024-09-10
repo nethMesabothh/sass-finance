@@ -3,28 +3,28 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Plus } from "lucide-react";
 import React from "react";
-import { useNewAccount } from "@/hooks/accounts/use-new-account";
+import { useNewCategory } from "@/hooks/categories/use-new-category";
 
 import { columns } from "./columns";
-import { DataTable } from "@/components/_components/accounts/data-table";
-import { useGetAccounts } from "@/components/features/accounts/api/use-get-accounts";
+import { DataTable } from "@/components/_components/categories/data-table";
+import { useGetCategories } from "@/components/features/categories/api/use-get-categories";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useDeleteBulkAccount } from "@/components/features/accounts/api/use-bulk-delete";
+import { useDeleteBulkCategories } from "@/components/features/categories/api/use-bulk-delete-categories";
 
 type Props = {};
 
-const AccountPage = (props: Props) => {
-  const newAccount = useNewAccount();
+const CategoryPage = (props: Props) => {
+  const newCategory = useNewCategory();
 
-  const accountQuery = useGetAccounts();
+  const categoryQuery = useGetCategories();
 
-  const account = accountQuery.data || [];
+  const category = categoryQuery.data || [];
 
-  const deleteAccount = useDeleteBulkAccount();
+  const deleteCategory = useDeleteBulkCategories();
 
-  const isDisabled = accountQuery.isLoading || deleteAccount.isPending;
+  const isDisabled = categoryQuery.isLoading || deleteCategory.isPending;
 
-  if (accountQuery.isLoading) {
+  if (categoryQuery.isLoading) {
     return (
       <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
         <Card className="border-none drop-shadow-sm">
@@ -46,8 +46,8 @@ const AccountPage = (props: Props) => {
     <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
       <Card className="border-none drop-shadow-sm">
         <CardHeader className="gap-y-2 lg:flex-row lg:items-center lg:justify-between">
-          <CardTitle className="text-xl line-clamp-1">Accounts Page</CardTitle>
-          <Button size="sm" onClick={newAccount.onOpen}>
+          <CardTitle className="text-xl line-clamp-1">Category Page</CardTitle>
+          <Button size="sm" onClick={newCategory.onOpen}>
             <Plus className="size-4 mr-2" />
             Add New
           </Button>
@@ -55,12 +55,12 @@ const AccountPage = (props: Props) => {
         <CardContent>
           <DataTable
             columns={columns}
-            data={account}
+            data={category}
             filterKey="name"
             onDelete={(rows) => {
               const ids = rows.map((row) => row.original.id);
 
-              deleteAccount.mutate({ ids });
+              deleteCategory.mutate({ ids });
             }}
             disabled={isDisabled}
           />
@@ -70,4 +70,4 @@ const AccountPage = (props: Props) => {
   );
 };
 
-export default AccountPage;
+export default CategoryPage;

@@ -10,12 +10,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { insertAccountSchema } from "@/db/schema";
+import { insertCategorySchema } from "@/db/schema";
 import { useForm } from "react-hook-form";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 
-const formSchema = insertAccountSchema.pick({
+const formSchema = insertCategorySchema.pick({
   name: true,
 });
 
@@ -29,7 +29,7 @@ type Props = {
   disabled?: boolean;
 };
 
-export const AccountForm = ({
+export const CategoryForm = ({
   id,
   onDelete,
   defaultValues,
@@ -60,19 +60,19 @@ export const AccountForm = ({
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Category</FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   disabled={disabled}
-                  placeholder="e.g. Cash, Bank, Credit Card"
+                  placeholder="e.g. Food, Travel, Vacation, ..."
                 />
               </FormControl>
             </FormItem>
           )}
         />
         <Button type="submit" className="w-full" disabled={disabled}>
-          {id ? "Save Changes" : "Create account"}
+          {id ? "Save Changes" : "Create Category"}
         </Button>
         {!!id && (
           <Button
@@ -84,7 +84,7 @@ export const AccountForm = ({
             variant="outline"
           >
             <Trash2 className="size-4 mr-2" />
-            Delete account
+            Delete category
           </Button>
         )}
       </form>

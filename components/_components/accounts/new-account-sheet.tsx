@@ -8,12 +8,12 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useNewAccount } from "@/hooks/use-new-account";
+import { useNewAccount } from "@/hooks/accounts/use-new-account";
 import { AccountForm } from "./account-form";
 import { insertAccountSchema } from "@/db/schema";
 import { z } from "zod";
 import { useCreateAccount } from "@/components/features/accounts/api/use-create-accounts";
-import { useOpenEditAccount } from "@/hooks/use-open-edit-account";
+import { useOpenEditAccount } from "@/hooks/accounts/use-open-edit-account";
 
 const formSchema = insertAccountSchema.pick({
   name: true,

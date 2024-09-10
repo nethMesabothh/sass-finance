@@ -1,4 +1,4 @@
-import { useDeleteAccount } from "@/components/features/accounts/api/use-delete-account";
+import { useDeleteCategory } from "@/components/features/categories/api/use-delete-category";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useConfirm } from "@/hooks/accounts/use-confirm";
-import { useOpenEditAccount } from "@/hooks/accounts/use-open-edit-account";
+import { useOpenEditCategory } from "@/hooks/categories/use-open-edit-category";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 import React from "react";
 
@@ -16,21 +16,21 @@ type Props = {
 };
 
 const Actions = (props: Props) => {
-  const { onOpen, onClose } = useOpenEditAccount();
-  const deleteAccountQuery = useDeleteAccount(props.id);
+  const { onOpen, onClose } = useOpenEditCategory();
+  const deleteCategoryQuery = useDeleteCategory(props.id);
 
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
-    "You are about to delete the account!"
+    "You are about to delete the category!"
   );
 
-  const isPending = deleteAccountQuery.isPending;
+  const isPending = deleteCategoryQuery.isPending;
 
   const confirmDelete = async () => {
     const okay = await confirm();
 
     if (okay) {
-      deleteAccountQuery.mutate(undefined, {
+      deleteCategoryQuery.mutate(undefined, {
         onSuccess: () => {
           onClose();
         },

@@ -28,10 +28,10 @@ const routes = [
     href: "/accounts",
     label: "Account",
   },
-  // {
-  //   href: "/categories",
-  //   label: "Categories",
-  // },
+  {
+    href: "/categories",
+    label: "Categories",
+  },
   // {
   //   href: "/settings",
   //   label: "Settings",
