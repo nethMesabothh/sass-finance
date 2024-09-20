@@ -20,10 +20,10 @@ const routes = [
     href: "/",
     label: "Overview",
   },
-  // {
-  //   href: "/transactions",
-  //   label: "Transactions",
-  // },
+  {
+    href: "/transactions",
+    label: "Transactions",
+  },
   {
     href: "/accounts",
     label: "Account",

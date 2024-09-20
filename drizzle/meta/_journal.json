@@ -15,6 +15,13 @@
       "when": 1725955414825,
       "tag": "0001_aspiring_klaw",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1726454013584,
+      "tag": "0002_massive_sabretooth",
+      "breakpoints": true
     }
   ]
 }

@@ -4,18 +4,18 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
 
 type ResType = InferResponseType<
-  (typeof client.api.categories)[":id"]["$patch"]
+  (typeof client.api.transactions)[":id"]["$patch"]
 >;
 type ReqType = InferRequestType<
-  (typeof client.api.categories)[":id"]["$patch"]
+  (typeof client.api.transactions)[":id"]["$patch"]
 >["json"];
 
-export const useEditCategory = (id?: string) => {
+export const useEditTransaction = (id?: string) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation<ResType, Error, ReqType>({
     mutationFn: async (json) => {
-      const res = await client.api.categories[":id"]["$patch"]({
+      const res = await client.api.transactions[":id"]["$patch"]({
         json,
         param: { id },
       });
@@ -23,13 +23,12 @@ export const useEditCategory = (id?: string) => {
       return await res.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["category", { id }] });
-      queryClient.invalidateQueries({ queryKey: ["categories"] });
+      queryClient.invalidateQueries({ queryKey: ["transaction", { id }] });
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
-      toast.success("category updated!");
+      toast.success("Transaction updated!");
     },
     onError: () => {
-      toast.error("Failed to edit category");
+      toast.error("Failed to edit transaction");
     },
   });
 
